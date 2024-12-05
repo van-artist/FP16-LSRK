@@ -1,5 +1,32 @@
-# Implementation of efficient low-storage techniques for 3-D seismic simulation using the curved grid finite-difference method
+# Efficient Low-Storage 3D Seismic Simulation Using Curved Grid Finite-Difference Method (CGFDM)
 
-High-resolution three-dimensional (3D) seismic simulation imposes severe demands for computational memory, making low-storage seismic simulation particularly important. Due to its high-efficiency and low-storage, the half-precision floating-point 16-bit format (FP16) is widely used in heterogeneous computing platforms, such as Sunway series supercomputers and graphics processing unit (GPU) computing platforms. Furthermore, the low-storage Runge-Kutta (LSRK) technique requires lower memory resources compared with the classical Runge-Kutta. Therefore, FP16 and LSRK provide the possibility for low-storage seismic simulation. However, the orders of magnitude of the physical quantities (velocity, stress, and Lamé constants) in the elastic wave equations are influenced by the P-wave and S-wave velocities and the densities of the elastic media. This results in a huge order of magnitude difference between the stored velocity and stress values, which exceed the range of the stored values of FP16. In this paper, we introduce three dimensionless constants, Cv, Cs, and Cp, into elastic wave equations, and new elastic wave equations are derived. The three constants, Cv, Cs, and Cp, keep the orders of magnitude of the velocity and stress at a similar level in the new elastic wave equations. Thus, the stored values of these variables in new equations remain within the range of the stored values of FP16. In addition, we introduce the use of the LSRK due to its low-storage characteristic. In this paper, based on the FP16 and LSRK low-storage techniques, we develop 3 optimized multi-GPU solvers for seismic simulation using the curved grid finite-difference method (CGFDM). Moreover, we perform a series of seismic simulations to verify the accuracy, stability, and validity of the optimized solver coupled with the two techniques. The verifications indicate that through maintaining the calculation accuracy, the computational efficiency of the solver is significantly optimized, and the memory usage is remarkably reduced. In particular, under the best conditions, the memory usage can be reduced to nearly 1/3 that of the original CGFDM solver.
+## Overview
 
-Wenqiang Wang, Zhenguo Zhang, Wenqiang Zhang, and Qi Liu. Implementation of efficient low-storage techniques for 3-D seismic simulation using the curved grid finite-difference method, Geophysical Journal International, 2023;, ggad198, https://doi.org/10.1093/gji/ggad198
+High-resolution three-dimensional (3D) seismic simulation imposes severe demands for computational memory, making low-storage seismic simulation particularly important. Due to its high efficiency and low storage, the half-precision floating-point 16-bit format (FP16) is widely used in heterogeneous computing platforms, such as Sunway series supercomputers and graphics processing unit (GPU) computing platforms.
+
+This project introduces FP16 and the Low-Storage Runge-Kutta (LSRK) technique to reduce memory usage. It also derives new elastic wave equations by introducing three dimensionless constants, \(C_v\), \(C_s\), and \(C_p\), to normalize the magnitude of velocity and stress variables, ensuring they remain within FP16's representable range. These techniques enable the development of optimized multi-GPU solvers for seismic simulation using the curved grid finite-difference method (CGFDM).
+
+## Key Features
+
+- **FP16 for Low Storage**:
+  - Reduces memory usage while maintaining computational efficiency.
+- **Low-Storage Runge-Kutta (LSRK)**:
+  - Further reduces memory demand compared to classical Runge-Kutta methods.
+- **Magnitude Normalization**:
+  - Keeps physical quantities within FP16 range using \(C_v\), \(C_s\), and \(C_p\).
+- **Optimized Multi-GPU Solvers**:
+  - Improves performance for large-scale seismic simulations.
+- **Memory Usage Reduction**:
+  - Reduces memory usage by up to 1/3 compared to the original CGFDM solver.
+
+## Validation
+
+The optimized solver has been verified through a series of seismic simulations, demonstrating:
+
+- High computational accuracy and stability.
+- Significant optimization of computational efficiency.
+- Effective memory usage reduction.
+
+## Citation
+
+Wenqiang Wang, Zhenguo Zhang, Wenqiang Zhang, and Qi Liu. "Implementation of efficient low-storage techniques for 3-D seismic simulation using the curved grid finite-difference method," _Geophysical Journal International_, 2023. [DOI:10.1093/gji/ggad198](https://doi.org/10.1093/gji/ggad198)
